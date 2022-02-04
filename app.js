@@ -52,33 +52,65 @@ discard.addEventListener('click', function () {
 
 // 02
 // FAQ with Accordion Like Bootstrap Start
+
+
+
+
+// Third way = all acco is not open one time
 const accheader = document.querySelectorAll('.acc-header');
 // const accbody = document.querySelectorAll('.acc-body');
 
 
 accheader.forEach(e => {
     e.addEventListener('click', function () {
+
+        const curr_activ = document.querySelector('.activeArrow');
+        if(curr_activ && curr_activ != this){
+            curr_activ.classList.remove('activeArrow');
+            curr_activ.nextElementSibling.style.height = 0;
+        }
+        console.log(curr_activ);
         e.classList.toggle('activeArrow')
         
         if(e.classList.contains('activeArrow')){
             // e.nextElementSibling.style.height = 'auto';
             e.nextElementSibling.style.height = e.nextElementSibling.scrollHeight + 'px';
-            
         }else{
             e.nextElementSibling.style.height = 0;
         }
-        accheader.forEach(e => {
-            if(e != this){
-                e.classList.remove('activeArrow');
-                e.nextElementSibling.style.height = 0;
-            }
-        })
-        
     });
-});
+})
+
+// // second way = all acco is not open one time
+// const accheader = document.querySelectorAll('.acc-header');
+// // const accbody = document.querySelectorAll('.acc-body');
 
 
+// accheader.forEach(e => {
+//     e.addEventListener('click', function () {
+//         e.classList.toggle('activeArrow')
+        
+//         accheader.forEach(e => {
+//             if(e != this){
+//                 e.classList.remove('activeArrow');
+//                 e.nextElementSibling.style.height = 0;
+//             }
+//         });
 
+//         if(e.classList.contains('activeArrow')){
+//             // e.nextElementSibling.style.height = 'auto';
+//             e.nextElementSibling.style.height = e.nextElementSibling.scrollHeight + 'px';
+            
+//         }else{
+//             e.nextElementSibling.style.height = 0;
+//         }
+        
+        
+//     });
+// });
+
+
+// fast way = all acco is open one time
 // const accheader = document.querySelectorAll('.acc-header');
 // // const accbody = document.querySelectorAll('.acc-body');
 
